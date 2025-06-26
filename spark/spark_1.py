@@ -74,28 +74,7 @@ def display_results(df):
     
     print("=" * 100)
     
-    # Thống kê theo phòng ban
-    print("\nTHỐNG KÊ THEO PHÒNG BAN:")
-    print("=" * 80)
-    
-    dept_stats = df.groupby('Ten phong ban').agg({
-        'Ma nhan vien': 'count',
-        'Tuoi': 'mean',
-        'Luong co ban': 'mean',
-        'Luong moi': 'mean',
-        'Tuoi': lambda x: (x > 30).sum()  # Đếm số nhân viên trên 30 tuổi
-    }).round(2)
-    dept_stats.columns = ['Số NV', 'Tuổi TB', 'Lương cũ TB', 'Lương mới TB', 'NV >30 tuổi']
-    
-    print(f"{'Phòng ban':<15} {'Số NV':<8} {'Tuổi TB':<8} {'Lương cũ TB':<15} {'Lương mới TB':<15} {'NV >30 tuổi':<10}")
-    print("-" * 80)
-    
-    for dept, stats in dept_stats.iterrows():
-        print(f"{dept:<15} {int(stats['Số NV']):<8} {stats['Tuổi TB']:<8.1f} "
-              f"{stats['Lương cũ TB']:,.0f}VND{'':<5} {stats['Lương mới TB']:,.0f}VND{'':<5} "
-              f"{int(stats['NV >30 tuổi']):<10}")
-    
-    print("=" * 80)
+ 
 
 def save_results(df, output_file):
     """
